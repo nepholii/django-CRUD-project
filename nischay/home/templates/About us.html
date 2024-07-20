@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+{% block start %}
+<link rel="stylesheet" href="homepagestyle.css">
+<!--Internal css-->
+<style>
+    .spacing{
+        width: 100%;
+        height: 70px;
+    }
+    /* prevents horizontal overflow */
+    body{
+        overflow-x: hidden;
+    }
+    .container1{
+        display: flex;
+        width: 60%;
+    }
+
+    .text  p{
+        font-size: 24px;
+    }
+
+    .heading{
+        width: 100%;
+        display: flex; /*displays as a block level flex container*/
+        justify-content: center;
+        align-items: left;
+        flex-direction: column;
+        text-align: centre;
+        margin:25px auto;
+    }
+
+    .heading h1{    
+        color: black;
+        margin-bottom: 10px;     
+    }
+
+    .heading p{
+        font-size: 25px;
+        color: black;
+        margin-bottom: 35px;
+    }
+
+    .features{
+        font-size: 20px;
+        text-align: center;
+        background-color: #333;
+        color: white;
+        height: auto;
+    }
+
+    .choose{
+        background-image:url(media/bgimage); /*Inserting background image*/
+        background-size: cover;
+        padding-left: 44%;
+        padding-bottom: 15px;
+        height: 30%;
+        font-size: 23px;
+        
+    }
+
+    .ourteam{
+        background-color:white;
+        text-align: center;
+        color: rgb(18, 18, 18);
+        font-size: 15px;    
+    }
+
+    .ourteam h1{
+        color:white;
+        background-color: #333;
+    }
+
+    section{
+        display: flex;
+        justify-content: space-around; /*there will be space before, between, and after item*/
+        flex-wrap: wrap; /*items will wrap if necessary*/
+        padding: 20px;
+        background-image: url(images/color1.png);
+        background-size: cover;
+    }
+
+    .teammember{
+        text-align: left;
+        width: 250px;
+        margin: 20px;
+    }
+    /*Styling for the image of members*/
+    .teammember img{
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    .feedback{
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* box sizing adds padding and border in the width and height */
+        background-image: url(images/color1.png);
+        background-size: cover;   
+    }
+
+    .feedback h1{
+        background-color:#333;
+        color: white;
+        text-align: left;
+        height: 41px;
+        justify-content: center;
+        font-size: 30px;
+        padding-left: 22px;
+    }
+    /* Styling for form */
+    form{
+        max-width: 45%;
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px; /* Add rounded corners */
+        box-shadow:10px #333; /*Add shadows to the box*/
+    }
+
+    label{
+        display: block;
+        margin-bottom: 8px;
+    }
+    /* Styling for form inputs */
+    input,textarea{
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    /* Styling for submit button */
+    button{
+        background-color:#333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer; /*Cursor becomes pointer*/
+    }
+   
+    button:hover {
+        background-color: grey; /*background color of button will change when we hover cursor*/
+    }
+
+</style>
+<div class="repi">
+    <!--Heading part-->
+    <div class="heading"><h1> About Us</h1>
+        <p>Offering you the best recipe</p>
+    </div>
+    <!--Intro section-->
+    <div class="container1">
+        <div class="text">
+            <h1>Repi</h1>
+            <p>Welcome to Repi, your ultimate destination for discovering delicious and diverse recipes! Our website is designed to inspire home cooks of all skill levels with a vast collection of recipes from around the world. Whether you're looking for quick weeknight dinners, elegant dishes for entertaining, or decadent desserts to satisfy your sweet tooth, we have something for everyone.
+
+                Explore our user-friendly categories to find recipes for every occasion, from hearty breakfasts and nutritious lunches to gourmet dinners and delightful snacks. Each recipe comes with detailed instructions, ingredient lists, and vibrant photos to guide you step-by-step. Additionally, our tips and tricks section offers valuable insights to help you master cooking techniques and elevate your culinary skills.
+                
+                Join our community of food enthusiasts to share your creations, leave reviews, and exchange ideas. At Repi, we believe that cooking should be fun, enjoyable, and a way to bring people together. Start your culinary adventure with us today and discover the joy of cooking!.</p>
+        </div>
+    </div>
+</div>
+<!--our features section-->
+<div class="features">
+    <h2>What do we offer?</h2>
+</div>
+<div class="choose"> 
+    <div>
+      <!--Making an unordered list-->
+      <ul>
+        <li>Extensive Recipe Collection:</li>
+        <li>Easy Navigation</li>
+        <li>Detailed Instructions</li>
+        <li>Meal Planning:</li>
+        <li>Cooking Tips and Techniques</li>
+        <li>Community Engagement</li>
+      </ul>
+    </div>   
+</div>
+<!-- Our Team section -->
+<div class="ourteam">
+    <h1>Meet Our Team</h1>
+    <section class="tem">
+    <div class="teammember">
+        <img src="" >
+        <h2>coder2.0</h2>
+        <p><b>Soft skills:</b> Critical thinking, Communication <br>
+        <b>Educational background:</b> Completed high school <br>
+        <b>Volunteering experience:</b> Volunteered in cybersecurity awareness workshops<br>
+        <b>Certifications:</b> Certified Ethical Hacker (CEH)</p>
+    </div>
+    <div class="teammember">
+        <img src="" >
+        <h2>coder</h2>
+        <p><b>Soft skills:</b> Problem solving, Time management <br>
+            <b>Educational background:</b> Completed high school <br>
+            <b>Volunteering experience:</b> Volunteered to manage databases for local business<br>
+            <b>Certifications:</b> Project Management Professional (PMP)</p>
+    </div></section>
+
+</div>
+<br>
+<div class="feedback">
+    <div>
+        <h1>Feedback</h1>
+    </div>
+        <!--Form section-->
+        <form id="feedForm">
+            <div>
+                <!--code for the input of name-->
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required> <!--Input type is text and it is an required field-->
+            </div>
+            <br>
+            <div>
+                 <!--code for the input of email-->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>  <!--Input type is email and it is also an required field-->
+            </div>
+            <br>
+            <div>
+                 <!--code for the input of feedback-->
+                <label for="feedback">Your feedback</label>
+                <textarea id="feedback" name="feedback" placeholder="Feedback" rows="5" required></textarea>   <!--Input type is text and it is also an required field-->
+            </div>
+            <!--code for submit button-->
+            <button type="submit">Submit</button>
+        </form>  
+</div>
+{% endblock %}

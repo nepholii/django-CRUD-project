@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block start %}
+
+<style>
+    .logo {
+            font-size: 42px; /* Makes the text big */
+            font-weight: bold; /* Makes the text bold */
+            color: #333; /* Dark gray color for the text */
+            font-family: 'Arial', sans-serif; /* Font style */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+        }
+        .link {
+            font-size: 18px; /* Adjust font size */
+            margin-right: 15px; /* Spacing between links */
+            text-decoration: none; /* Remove underline */
+            color: #333; /* Link color */
+        }
+
+        .link:hover {
+            color: #007BFF; /* Change color on hover */
+        }
+
+        .icon {
+            margin-right: 8px; /* Space between icon and text */
+        }
+        popup-container {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popup-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+.icon-container {
+  position: absolute;
+  bottom: 30px;  /* Adjust distance from bottom */
+  right: 30px;   /* Adjust distance from right */
+  width: 60px;   /* Adjust icon and text container size */
+  height: 60px;  /* Adjust icon and text container size */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 50%;
+  cursor: pointer; /* Set cursor to pointer on hover */
+  display: flex;  /* Added for positioning */
+  flex-direction: column; /* Added for positioning */
+  align-items: center; /* Added for centering text and icon */
+  justify-content: center; /* Added for centering text and icon */
+}
+
+.icon-text {
+  color: white; /* Adjust text color */
+  font-size: 12px; /* Adjust text size */
+  margin-bottom: 5px; /* Add spacing between text and icon */
+}
+
+.fa-solid.fa-plus {
+  font-size: 40px; /* Adjust icon size */
+  color: white; /* Adjust icon color */
+}
+
+</style>
+    <main>
+       <br>
+       <br>
+       
+        <script src="https://cdn.jsdelivr.net/npm/three@0.127/build/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.127/examples/js/loaders/GLTFLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.127/examples/js/controls/OrbitControls.js"></script>
+        <script>
+          let scene, camera, renderer, controls;
+          const iconContainer = document.querySelector('.icon-container'); // Get icon container
+        
+          function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(6, 3, 2); // Position the camera to view the side of the bus
+            camera.lookAt(0, 0, 0); // Point the camera towards the center of the scene
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+        
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.25;
+            controls.enableZoom = true;
+            controls.maxPolarAngle = Math.PI / 2; // Cannot look above the horizon
+            controls.minDistance = 2; // Minimum distance from the model
+            controls.maxDistance = 9; // Maximum distance from the model
+        
+            // Restrict rotation to only around the y-axis (horizontal rotation)
+            controls.minAzimuthAngle = -Math.PI / 2; // No rotation beyond the left side
+            controls.maxAzimuthAngle = Math.PI / 2; // No rotation beyond the right side
+        
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+        
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(10, 10, 7.5);
+            scene.add(directionalLight);
+        
+            // Load your GLTF model (replace with the path)
+            const loader = new THREE.GLTFLoader();
+            loader.load(
+              'media/recipie/Sketchfab_2023_05_08_14_14_00.glb',
+             function (gltf) {
+      scene.add(gltf.scene);
+      camera.position.z = 3;
+    animate();
+ },
+  undefined,
+     function (error) {
+     console.error('An error happened', error);
+ }
+ );
+ }
+        
+          function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+          }
+        
+          init();
+        </script>
+        </div>
+  <div class="icon-container">
+    <a href="/add-recepies/" style="color: aliceblue; white-space: nowrap;">Add Recipe <br><i class="fa-solid fa-plus"></i></a>
+ </div>
+    {% endblock %}
